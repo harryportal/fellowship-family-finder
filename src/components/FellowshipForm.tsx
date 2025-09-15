@@ -38,8 +38,7 @@ export const FellowshipForm = () => {
     setIsSubmitting(true);
 
     try {
-      // TODO: Replace with actual backend endpoint
-      const response = await fetch('/api/assign-family', {
+      const response = await fetch('http://itmobot.unilag.edu.ng/family/get-one', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -49,11 +48,11 @@ export const FellowshipForm = () => {
 
       if (response.ok) {
         const data = await response.json();
-        setAssignedFamily(data.familyName);
+        setAssignedFamily(data.family);
         setHasSubmitted(true);
         toast({
-          title: "Welcome to your fellowship family! 🎉",
-          description: `You've been assigned to ${data.familyName}`,
+          title: "Family Assignment Complete! 🎉",
+          description: `You've been assigned to ${data.family}`,
         });
       } else {
         throw new Error('Failed to assign family');
@@ -70,7 +69,7 @@ export const FellowshipForm = () => {
         setAssignedFamily(randomFamily);
         setHasSubmitted(true);
         toast({
-          title: "Welcome to your fellowship family! 🎉",
+          title: "Family Assignment Complete! 🎉",
           description: `You've been assigned to ${randomFamily}`,
         });
         setIsSubmitting(false);
@@ -104,7 +103,7 @@ export const FellowshipForm = () => {
                 Fellowship Family Assignment
               </CardTitle>
               <CardDescription className="text-muted-foreground mt-2">
-                Register to be assigned to your fellowship family group
+                Register your details to be assigned to a family group
               </CardDescription>
             </div>
           </CardHeader>
@@ -183,24 +182,8 @@ export const FellowshipForm = () => {
                 </p>
               </div>
               
-              {/* Holiday meetings invitation */}
-              <div className="p-4 bg-primary/10 rounded-lg border border-primary/20 space-y-2">
-                <div className="flex items-center justify-center gap-2 text-primary font-semibold">
-                  <Video className="w-5 h-5" />
-                  Holiday Online Meetings
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  Don't miss our special holiday online fellowship meetings! 
-                  Join us for worship, prayers, and community connection during the break.
-                </p>
-                <div className="flex items-center justify-center gap-2 text-xs text-primary">
-                  <Calendar className="w-4 h-4" />
-                  Check your family group for meeting schedules
-                </div>
-              </div>
-              
-              <p className="text-muted-foreground">
-                Your family leader will contact you soon with meeting details and fellowship activities.
+              <p className="text-sm text-muted-foreground">
+                Don't miss our special meetings this holiday to keep ourselves equipped in the faith.
               </p>
             </div>
             
