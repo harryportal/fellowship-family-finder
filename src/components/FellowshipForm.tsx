@@ -38,7 +38,7 @@ export const FellowshipForm = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('http://itmobot.unilag.edu.ng/family/get-one', {
+      const response = await fetch('https://itmobot.unilag.edu.ng/family/get-one', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
