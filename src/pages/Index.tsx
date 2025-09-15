@@ -21,24 +21,12 @@ const Index = () => {
           <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-primary">
             Unilag Chapter - Family Assignment
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Welcome to our campus fellowship! Register below to be assigned to your fellowship family group. 
-            Join us for worship, fellowship, and spiritual growth together.
-          </p>
         </div>
         
         <div className="flex justify-center">
           <FellowshipForm />
         </div>
         
-        <div className="text-center mt-12 animate-fade-in space-y-3">
-          <p className="text-sm text-muted-foreground">
-            Questions? Contact your fellowship leaders for assistance.
-          </p>
-          <div className="text-xs text-primary font-medium">
-            Don't forget to join our holiday online meetings! 🙏
-          </div>
-        </div>
       </div>
     </div>
   );

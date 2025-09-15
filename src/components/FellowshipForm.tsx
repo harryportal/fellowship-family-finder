@@ -50,8 +50,9 @@ export const FellowshipForm = () => {
         const data = await response.json();
         setAssignedFamily(data.family);
         setHasSubmitted(true);
+        const firstName = formData.name.split(' ')[0];
         toast({
-          title: "Family Assignment Complete! 🎉",
+          title: `Congratulations ${firstName}! 🎉`,
           description: `You've been assigned to ${data.family}`,
         });
       } else {
@@ -68,8 +69,9 @@ export const FellowshipForm = () => {
       setTimeout(() => {
         setAssignedFamily(randomFamily);
         setHasSubmitted(true);
+        const firstName = formData.name.split(' ')[0];
         toast({
-          title: "Family Assignment Complete! 🎉",
+          title: `Congratulations ${firstName}! 🎉`,
           description: `You've been assigned to ${randomFamily}`,
         });
         setIsSubmitting(false);
@@ -171,7 +173,7 @@ export const FellowshipForm = () => {
             
             <div className="space-y-4">
               <h2 className="text-2xl font-bold text-foreground">
-                Family Assignment Complete! 🎉
+                Congratulations {formData.name.split(' ')[0]}! 🎉
               </h2>
               <div className="p-4 bg-success/10 rounded-lg border border-success/20">
                 <p className="text-lg font-semibold text-success mb-1">
