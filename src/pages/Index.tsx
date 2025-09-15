@@ -14,13 +14,16 @@ const Index = () => {
         <div className="text-center mb-12 animate-fade-in">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Fellowship
+              Cherubim & Seraphim
             </span>{" "}
-            <span className="text-foreground">Family Registration</span>
+            <span className="text-foreground">Campus Fellowship</span>
           </h1>
+          <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-primary">
+            Unilag Chapter - Family Assignment
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Welcome to our student church fellowship! Join a loving family community 
-            where you'll find friendship, support, and spiritual growth together.
+            Welcome to our campus fellowship! Register below to be assigned to your fellowship family group. 
+            Join us for worship, fellowship, and spiritual growth together.
           </p>
         </div>
         
@@ -28,10 +31,13 @@ const Index = () => {
           <FellowshipForm />
         </div>
         
-        <div className="text-center mt-12 animate-fade-in">
+        <div className="text-center mt-12 animate-fade-in space-y-3">
           <p className="text-sm text-muted-foreground">
             Questions? Contact your fellowship leaders for assistance.
           </p>
+          <div className="text-xs text-primary font-medium">
+            Don't forget to join our holiday online meetings! 🙏
+          </div>
         </div>
       </div>
     </div>

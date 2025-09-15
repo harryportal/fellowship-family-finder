@@ -4,7 +4,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { Users, Heart, Phone, User } from "lucide-react";
+import { Users, Heart, Phone, User, Calendar, Video } from "lucide-react";
+import churchLogo from "@/assets/church-logo.png";
 
 interface FormData {
   name: string;
@@ -91,15 +92,19 @@ export const FellowshipForm = () => {
       {!hasSubmitted ? (
         <Card className="shadow-soft border-0 bg-card/50 backdrop-blur-sm">
           <CardHeader className="text-center space-y-4">
-            <div className="w-16 h-16 mx-auto bg-gradient-primary rounded-full flex items-center justify-center shadow-warm">
-              <Users className="w-8 h-8 text-primary-foreground" />
+            <div className="w-20 h-20 mx-auto flex items-center justify-center">
+              <img 
+                src={churchLogo} 
+                alt="Cherubim & Seraphim Church Unification - Unilag Chapter" 
+                className="w-full h-full object-contain"
+              />
             </div>
             <div>
               <CardTitle className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                Join Your Fellowship Family
+                Fellowship Family Assignment
               </CardTitle>
               <CardDescription className="text-muted-foreground mt-2">
-                Enter your details to be assigned to a loving fellowship family
+                Register to be assigned to your fellowship family group
               </CardDescription>
             </div>
           </CardHeader>
@@ -150,8 +155,8 @@ export const FellowshipForm = () => {
                   </div>
                 ) : (
                   <div className="flex items-center gap-2">
-                    <Heart className="w-4 h-4" />
-                    Join Fellowship
+                    <Users className="w-4 h-4" />
+                    Get Family Assignment
                   </div>
                 )}
               </Button>
@@ -165,9 +170,9 @@ export const FellowshipForm = () => {
               <Heart className="w-10 h-10 text-white" />
             </div>
             
-            <div className="space-y-3">
+            <div className="space-y-4">
               <h2 className="text-2xl font-bold text-foreground">
-                Welcome to Your Family! 🎉
+                Family Assignment Complete! 🎉
               </h2>
               <div className="p-4 bg-success/10 rounded-lg border border-success/20">
                 <p className="text-lg font-semibold text-success mb-1">
@@ -177,8 +182,25 @@ export const FellowshipForm = () => {
                   {assignedFamily}
                 </p>
               </div>
+              
+              {/* Holiday meetings invitation */}
+              <div className="p-4 bg-primary/10 rounded-lg border border-primary/20 space-y-2">
+                <div className="flex items-center justify-center gap-2 text-primary font-semibold">
+                  <Video className="w-5 h-5" />
+                  Holiday Online Meetings
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  Don't miss our special holiday online fellowship meetings! 
+                  Join us for worship, prayers, and community connection during the break.
+                </p>
+                <div className="flex items-center justify-center gap-2 text-xs text-primary">
+                  <Calendar className="w-4 h-4" />
+                  Check your family group for meeting schedules
+                </div>
+              </div>
+              
               <p className="text-muted-foreground">
-                Your fellowship family will be in touch soon. Welcome to our community!
+                Your family leader will contact you soon with meeting details and fellowship activities.
               </p>
             </div>
             
@@ -187,7 +209,7 @@ export const FellowshipForm = () => {
               variant="outline"
               className="border-primary/20 hover:bg-primary/5"
             >
-              Submit Another Registration
+              Register Another Member
             </Button>
           </CardContent>
         </Card>
