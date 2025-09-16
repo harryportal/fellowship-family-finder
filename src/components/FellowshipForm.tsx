@@ -17,6 +17,7 @@ export const FellowshipForm = () => {
   const [assignedFamily, setAssignedFamily] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [backendMessage, setBackendMessage] = useState<string>("");
   const { toast } = useToast();
 
   const handleInputChange = (field: keyof FormData, value: string) => {
@@ -25,7 +26,7 @@ export const FellowshipForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!formData.name.trim() || !formData.phone.trim()) {
       toast({
         title: "Please fill in all fields",
@@ -49,37 +50,24 @@ export const FellowshipForm = () => {
       if (response.ok) {
         const data = await response.json();
         setAssignedFamily(data.family);
+        setBackendMessage(data.message); // <-- set backend message here
         setHasSubmitted(true);
-        const firstName = formData.name.split(' ')[0];
         toast({
-          title: `Congratulations ${firstName}! 🎉`,
-          description: `You've been assigned to ${data.family}`,
+          title: "Success!",
+          description: data.message,
         });
       } else {
         throw new Error('Failed to assign family');
       }
     } catch (error) {
-      // For demo purposes, simulate a successful assignment
-      const demoFamilies = [
-        "Grace Family", "Hope Family", "Faith Family", "Love Family", 
-        "Peace Family", "Joy Family", "Wisdom Family", "Light Family"
-      ];
-      const randomFamily = demoFamilies[Math.floor(Math.random() * demoFamilies.length)];
-      
-      setTimeout(() => {
-        setAssignedFamily(randomFamily);
-        setHasSubmitted(true);
-        const firstName = formData.name.split(' ')[0];
-        toast({
-          title: `Congratulations ${firstName}! 🎉`,
-          description: `You've been assigned to ${randomFamily}`,
-        });
-        setIsSubmitting(false);
-      }, 1500);
-      return;
+      toast({
+        title: "Assignment Failed",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
-
-    setIsSubmitting(false);
   };
 
   const resetForm = () => {
@@ -170,10 +158,10 @@ export const FellowshipForm = () => {
             <div className="w-20 h-20 mx-auto bg-gradient-to-br from-success to-primary rounded-full flex items-center justify-center shadow-warm">
               <Heart className="w-10 h-10 text-white" />
             </div>
-            
+
             <div className="space-y-4">
               <h2 className="text-2xl font-bold text-foreground">
-                Congratulations {formData.name.split(' ')[0]}! 🎉
+                {backendMessage}
               </h2>
               <div className="p-4 bg-success/10 rounded-lg border border-success/20">
                 <p className="text-lg font-semibold text-success mb-1">
